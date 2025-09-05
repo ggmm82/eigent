@@ -11,6 +11,7 @@ import { proxyFetchPut, proxyFetchGet } from "@/api/http";
 import { createRef, RefObject } from "react";
 import { useEffect, useState } from "react";
 import { useChatStore } from "@/store/chatStore";
+import {LocaleEnum, switchLanguage} from "@/i18n";
 
 import {
 	Select,
@@ -47,6 +48,42 @@ export default function SettingGeneral() {
 			value: "transparent",
 		},
 	]);
+
+	const languageList = [
+		{
+			key: LocaleEnum.English,
+			label: "English",
+		},
+		{
+			key: LocaleEnum.Chinese,
+			label: "简体中文",
+		},
+		{
+			key: LocaleEnum.TraditionalChinese,
+			label: "繁體中文",
+		},
+		{
+			key: LocaleEnum.Japanese,
+			label: "日本語",
+		},
+		{
+			key: LocaleEnum.Arabic,
+			label: "العربية",
+		},
+		{
+			key: LocaleEnum.French,
+			label: "Français",
+		},
+		{
+			key: LocaleEnum.German,
+			label: "Deutsch",
+		},
+		{
+			key: LocaleEnum.Russian,
+			label: "Русский",
+		},
+	];
+
 	useEffect(() => {
 		const platform = window.electronAPI.getPlatform();
 		console.log(platform);
@@ -108,25 +145,28 @@ export default function SettingGeneral() {
 					</Button>
 				</div>
 			</div>
-			{/* <div className="px-6 py-4 bg-surface-secondary rounded-2xl">
+			<div className="px-6 py-4 bg-surface-secondary rounded-2xl">
 				<div className="text-base font-bold leading-12 text-text-primary">
 					Language
 				</div>
 				<div className="mt-md">
-					<Select value={language} onValueChange={setLanguage}>
+					<Select value={language} onValueChange={switchLanguage}>
 						<SelectTrigger>
 							<SelectValue placeholder="Select a fruit" />
 						</SelectTrigger>
 						<SelectContent className="bg-input-bg-default border">
 							<SelectGroup>
 								<SelectItem value="system">System Default</SelectItem>
-								<SelectItem value="zh-cn">简体中文</SelectItem>
-								<SelectItem value="en">English</SelectItem>
+								{languageList.map((item) => (
+									<SelectItem key={item.key} value={item.key}>
+										{item.label}
+									</SelectItem>
+								))}
 							</SelectGroup>
 						</SelectContent>
 					</Select>
 				</div>
-			</div> */}
+			</div>
 			<div className="px-6 py-4 bg-surface-secondary rounded-2xl">
 				<div className="text-base font-bold leading-12 text-text-primary">
 					Appearance
