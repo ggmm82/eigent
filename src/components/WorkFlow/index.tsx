@@ -301,7 +301,7 @@ export default function Workflow({
 		<div className="w-full h-full flex flex-col items-center justify-center">
 			<div className="flex items-center justify-between w-full ">
 				<div className="text-text-body font-bold text-lg leading-relaxed">
-					{t("your-ai-workforce")}
+					{t("workforce.your-ai-workforce")}
 				</div>
 				<div className="flex items-center justify-center gap-sm ">
 					{/* <Button

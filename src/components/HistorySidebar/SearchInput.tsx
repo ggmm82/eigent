@@ -28,7 +28,7 @@ export default function SearchInput({ value, onChange }: SearchInputProps) {
 			{!value && !isFocused && (
 				<span className="pointer-events-none absolute inset-0 flex items-center justify-center text-sm text-text-label select-none cursor-text">
 					<Search className="w-4 h-4 mr-1 text-icon-secondary" />
-					{t("search")}
+					{t("task-hub.search")}
 				</span>
 			)}
 			

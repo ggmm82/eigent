@@ -520,10 +520,10 @@ export default function ChatBox(): JSX.Element {
 					<div className=" w-full flex flex-col relative z-10">
 						<div className="flex flex-col items-center gap-1 h-[210px] justify-end">
 							<div className="text-xl leading-[30px] text-zinc-800 text-center font-bold">
-								{t("welcome-to-eigent")}
+								{t("chat.welcome-to-eigent")}
 							</div>
 							<div className="text-lg leading-7 text-zinc-500 text-center mb-5">
-								{t("how-can-i-help-you")}
+								{t("chat.how-can-i-help-you")}
 							</div>
 						</div>
 

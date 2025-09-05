@@ -182,7 +182,7 @@ function HeaderWin() {
 						className="mr-2 no-drag leading-tight"
 					>
 						<FileDown className="w-4 h-4" />
-						{t("report-bug")}
+						{t("layout.report-bug")}
 					</Button>
 					<Button
 						onClick={() => {
@@ -197,7 +197,7 @@ function HeaderWin() {
 							alt="chevron_left"
 							className="w-4 h-4 text-button-primary-icon-default"
 						/>
-						{t("refer-friends")}
+						{t("layout.refer-friends")}
 					</Button>
 					<Button
 						onClick={() => navigate("/setting")}

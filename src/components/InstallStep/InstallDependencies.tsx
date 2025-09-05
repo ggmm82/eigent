@@ -211,10 +211,10 @@ export const InstallDependencies: React.FC<{
 							className="mr-2 no-drag leading-tight"
 						>
 							<FileDown className="w-4 h-4" />
-							{t("report-bug")}
+							{t("layout.report-bug")}
 						</Button>
 						<Button size="sm" onClick={handleInstall}>
-							Retry
+							{t("layout.retry")}
 						</Button>
 					</DialogFooter>
 				</DialogContent>

@@ -73,15 +73,15 @@ export function SearchHistoryDialog() {
 				onClick={() => setOpen(true)}
 			>
 				<Search className="text-menutabs-icon-active" size={16} />
-				<span>{t("search")}</span>
+				<span>{t("task-hub.search")}</span>
 			</Button>
 			<CommandDialog open={open} onOpenChange={setOpen}>
 				<DialogTitle asChild>
-					<VisuallyHidden>{t("search-dialog")}</VisuallyHidden>
+					<VisuallyHidden>{t("task-hub.search-dialog")}</VisuallyHidden>
 				</DialogTitle>
-				<CommandInput placeholder={t("search-dialog-placeholder")} />
+				<CommandInput placeholder={t("task-hub.search-dialog-placeholder")} />
 				<CommandList>
-					<CommandEmpty>{t("no-results")}</CommandEmpty>
+					<CommandEmpty>{t("task-hub.no-results")}</CommandEmpty>
 					<CommandGroup heading="Today">
 						{historyTasks.map((task) => (
 							<CommandItem

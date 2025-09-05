@@ -324,7 +324,7 @@ export const BottomInput = ({
 							fontFamily: "Inter",
 						}}
 						rows={1}
-						placeholder={t("ask-placeholder")}
+						placeholder={t("chat.ask-placeholder")}
 						onInput={(e) => {
 							const el = e.currentTarget;
 							el.style.height = "auto";

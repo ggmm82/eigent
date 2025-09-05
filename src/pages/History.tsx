@@ -249,7 +249,7 @@ export default function Home() {
 			/>
 			<div>
 				<div className="px-6 py-4 flex justify-between items-center">
-					<div className="text-2xl font-bold leading-4">{t("ongoing-tasks")}</div>
+					<div className="text-2xl font-bold leading-4">{t("task-hub.ongoing-tasks")}</div>
 
 					<div className="flex items-center gap-md">
 						<SearchHistoryDialog />
@@ -260,7 +260,7 @@ export default function Home() {
 							onClick={createChat}
 						>
 							<Plus size={16} />
-							<span>{t("new-project")}</span>
+							<span>{t("task-hub.new-project")}</span>
 						</Button>
 						<Tabs
 							value={history_type}
@@ -271,11 +271,11 @@ export default function Home() {
 							<TabsList className="p-1 h-[28px] ">
 								<TabsTrigger value="table">
 									<Table size={16} />
-									<div>{t("table")}</div>
+									<div>{t("task-hub.table")}</div>
 								</TabsTrigger>
 								<TabsTrigger value="list">
 									<List size={16} />
-									<div>{t("list")}</div>
+									<div>{t("task-hub.list")}</div>
 								</TabsTrigger>
 							</TabsList>
 						</Tabs>
@@ -306,7 +306,7 @@ export default function Home() {
 											/>
 										</div>
 										<div className="text-[14px] text-text-primary font-bold leading-9 overflow-hidden text-ellipsis whitespace-nowrap">
-											{task.summaryTask || t("new-project")}
+											{task.summaryTask || t("task-hub.new-project")}
 										</div>
 										<div className="w-full">
 											<Progress
@@ -396,10 +396,10 @@ export default function Home() {
 									<div className=" flex-1 text-[14px] text-text-primary font-bold leading-9 overflow-hidden text-ellipsis whitespace-nowrap">
 										<Tooltip>
 											<TooltipTrigger asChild>
-												<span> {task.summaryTask || t("new-project")}</span>
+												<span> {task.summaryTask || t("task-hub.new-project")}</span>
 											</TooltipTrigger>
 											<TooltipContent>
-												<p> {task.summaryTask || t("new-project")}</p>
+												<p> {task.summaryTask || t("task-hub.new-project")}</p>
 											</TooltipContent>
 										</Tooltip>
 									</div>
@@ -532,11 +532,11 @@ export default function Home() {
 								<TabsList>
 									<TabsTrigger value="table">
 										<Table size={16} />
-										<div>{t("table")}</div>
+										<div>{t("task-hub.table")}</div>
 									</TabsTrigger>
 									<TabsTrigger value="list">
 										<List size={16} />
-										<div>{t("list")}</div>
+										<div>{t("task-hub.list")}</div>
 									</TabsTrigger>
 								</TabsList>
 							</Tabs>
@@ -577,7 +577,7 @@ export default function Home() {
 									</div>
 									<div className="flex-1 flex flex-col gap-1 w-full">
 										<div className="text-[14px] text-text-primary font-bold leading-9 overflow-hidden text-ellipsis whitespace-nowrap">
-											{task?.question || t("new-project")}
+											{task?.question || t("task-hub.new-project")}
 										</div>
 									</div>
 								</div>
@@ -609,7 +609,7 @@ export default function Home() {
 											<TooltipTrigger asChild>
 												<span>
 													{" "}
-													{task?.question.split("|")[0] || t("new-project")}
+													{task?.question.split("|")[0] || t("task-hub.new-project")}
 												</span>
 											</TooltipTrigger>
 											<TooltipContent
@@ -618,7 +618,7 @@ export default function Home() {
 											>
 												<div>
 													{" "}
-													{task?.question.split("|")[0] || t("new-project")}
+													{task?.question.split("|")[0] || t("task-hub.new-project")}
 												</div>
 											</TooltipContent>
 										</Tooltip>
@@ -653,7 +653,7 @@ export default function Home() {
 														}}
 													>
 														<Share size={16} />
-														{t("share")}
+														{t("task-hub.share")}
 													</Button>
 												</PopoverClose>
 
@@ -671,7 +671,7 @@ export default function Home() {
 															size={16}
 															className="text-icon-primary group-hover:text-icon-cuation"
 														/>
-														{t("delete")}
+														{t("task-hub.delete")}
 													</Button>
 												</PopoverClose>
 											</div>
