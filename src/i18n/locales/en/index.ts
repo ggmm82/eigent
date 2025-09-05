@@ -6,7 +6,7 @@ import chat from "./chat.json";
 export default {
 	general,
 	layout,	
-	taskHub,
+	'task-hub':taskHub,
 	workforce,
 	chat,
 };
