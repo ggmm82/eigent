@@ -15,8 +15,9 @@ RUN pip3 install uv Babel
 # Clona il repository
 RUN git clone https://github.com/ggmm82/eigent.git .
 
-# Installa dipendenze Node
-RUN npm install
+# Installa dipendenze Node e pulisce cache
+RUN npm install && npm cache clean --force
+
 
 # Compila Babel durante la build
 RUN npm run compile-babel
