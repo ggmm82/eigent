@@ -1,7 +1,7 @@
 from sqlmodel import Session, create_engine
 from app.component.environment import env, env_or_fail
 
-print("DB_URL:", env("database_url"))
+#print("DB_URL:", env("database_url"))
 engine = create_engine(
     env_or_fail("database_url"),
     echo=True if env("debug") == "on" else False,
@@ -16,5 +16,6 @@ def session_make():
 def session():
     with Session(engine) as session:
         yield session
+
 
 
