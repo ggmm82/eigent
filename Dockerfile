@@ -1,10 +1,6 @@
 # Base image con Node
 FROM node:20-bullseye
 
-# Aumenta il numero massimo di watcher
-RUN apt-get update && apt-get install -y procps \
- && sysctl -w fs.inotify.max_user_watches=524288
-
 # Imposta directory di lavoro
 WORKDIR /app
 
@@ -28,4 +24,4 @@ RUN npm run compile-babel
 # Esponi la porta usata da Vite
 EXPOSE 5173
 
-CMD ["npm", "run", "dev", "--", "--host"]
+CMD ["sh", "-c", "sysctl -w fs.inotify.max_user_watches=524288 && npm run dev -- --host"]
