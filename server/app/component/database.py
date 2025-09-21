@@ -3,6 +3,7 @@ from app.component.environment import env, env_or_fail
 
 
 engine = create_engine(
+    print("DB_URL:", env("database_url"))
     env_or_fail("database_url"),
     echo=True if env("debug") == "on" else False,
     pool_size=36,
@@ -16,3 +17,4 @@ def session_make():
 def session():
     with Session(engine) as session:
         yield session
+
