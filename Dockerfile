@@ -10,7 +10,7 @@ RUN apt-get update && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Installa il pacchetto uv (che fornisce il comando `uv`)
-RUN pip3 install uv pybabel
+RUN pip3 install uv Babel
 
 # Clona il repository
 RUN git clone https://github.com/eigent-ai/eigent.git .
