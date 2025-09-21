@@ -5,9 +5,6 @@ import react from '@vitejs/plugin-react'
 import electron from 'vite-plugin-electron/simple'
 import pkg from './package.json'
 
-
-
-
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
   rmSync('dist-electron', { recursive: true, force: true })
@@ -16,6 +13,7 @@ export default defineConfig(({ command, mode }) => {
   const isBuild = command === 'build'
   const sourcemap = isServe || !!process.env.VSCODE_DEBUG
   const env = loadEnv(mode, process.cwd(), '')
+
   return {
     resolve: {
       alias: {
@@ -26,11 +24,10 @@ export default defineConfig(({ command, mode }) => {
       react(),
       electron({
         main: {
-          // Shortcut of `build.lib.entry`
           entry: 'electron/main/index.ts',
           onstart(args) {
             if (process.env.VSCODE_DEBUG) {
-              console.log(/* For `.vscode/.debug.script.mjs` */'[startup] Electron App')
+              console.log('[startup] Electron App')
             } else {
               args.startup()
             }
@@ -47,12 +44,10 @@ export default defineConfig(({ command, mode }) => {
           },
         },
         preload: {
-          // Shortcut of `build.rollupOptions.input`.
-          // Preload scripts may contain Web assets, so use the `build.rollupOptions.input` instead `build.lib.entry`.
           input: 'electron/preload/index.ts',
           vite: {
             build: {
-              sourcemap: sourcemap ? 'inline' : undefined, // #332
+              sourcemap: sourcemap ? 'inline' : undefined,
               minify: isBuild,
               outDir: 'dist-electron/preload',
               rollupOptions: {
@@ -61,33 +56,29 @@ export default defineConfig(({ command, mode }) => {
             },
           },
         },
-        // Ployfill the Electron and Node.js API for Renderer process.
-        // If you want use Node.js in Renderer process, the `nodeIntegration` needs to be enabled in the Main process.
-        // See 👉 https://github.com/electron-vite/vite-plugin-electron-renderer
         renderer: {},
       }),
     ],
-    server: process.env.VSCODE_DEBUG && (() => {
-      const url = new URL(pkg.debug.env.VITE_DEV_SERVER_URL)
-      return {
-        host: url.hostname,
-        port: +url.port,
-        proxy: {
-          '/api': {
-            target: env.VITE_PROXY_URL,
-            changeOrigin: true,
-            // rewrite: path => path.replace(/^\/api/, ''),
+    server: {
+      ...(process.env.VSCODE_DEBUG && (() => {
+        const url = new URL(pkg.debug.env.VITE_DEV_SERVER_URL)
+        return {
+          host: url.hostname,
+          port: +url.port,
+          proxy: {
+            '/api': {
+              target: env.VITE_PROXY_URL,
+              changeOrigin: true,
+            },
           },
-        },
+        }
+      })()),
+      watch: {
+        // Ignora cartelle pesanti o non necessarie per evitare ENOSPC
+        ignored: ['**/node_modules/**', '**/.venv/**', '**/dist-electron/**']
       }
-    })(),
-
-     // <--- aggiungi questa parte
-    watch: {
-      ignored: ['**/node_modules/**', '**/.venv/**', '**/dist-electron/**']
     },
     clearScreen: false,
-
   }
 })
 
@@ -101,4 +92,3 @@ process.on('SIGINT', () => {
     console.log(e)
   }
 })
-
