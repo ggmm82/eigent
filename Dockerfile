@@ -12,12 +12,8 @@ RUN git clone https://github.com/ggmm82/eigent.git .
 # Installa le dipendenze Node
 RUN npm install
 
-# --- Build solo frontend senza pybabel né Electron ---
-# Creiamo uno script dedicato per evitare compile-babel e electron-builder
-RUN npm set-script build-frontend "vite build"
-
-# Esegui la build del frontend
-RUN npm run build-frontend
+# Build solo frontend (vite build) ignorando compile-babel ed Electron
+RUN npx vite build
 
 # ---------- Stage 2: Server statico ----------
 FROM node:20-alpine
