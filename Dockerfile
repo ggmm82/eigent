@@ -18,8 +18,8 @@ RUN git clone https://github.com/eigent-ai/eigent.git .
 # Installa le dipendenze Node
 RUN npm install
 
-# Esponi la porta Vite di default
+# Esponi la porta usata da Vite
 EXPOSE 5173
 
-# Comando per avviare l'app in modalità sviluppo
-CMD ["npm", "run", "dev"]
+# Avvia Vite esponendo tutte le interfacce di rete (0.0.0.0)
+CMD ["npm", "run", "dev", "--", "--host"]
