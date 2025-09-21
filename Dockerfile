@@ -1,28 +1,34 @@
-# Base image con Node
+# Base image con Node e Python
 FROM node:20-bullseye
 
-# Imposta directory di lavoro
+# Imposta la directory di lavoro
 WORKDIR /app
 
-# Aggiorna e installa git, python3, pip e strumenti di build
+# Installa git, Python e strumenti di build
 RUN apt-get update && \
     apt-get install -y git python3 python3-pip build-essential && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Installa il pacchetto uv (fornisce il comando `uv`) e Babel
+# Installa uv e Babel (per pybabel)
 RUN pip3 install uv Babel
 
 # Clona il repository
-RUN git clone https://github.com/eigent-ai/eigent.git .
+RUN git clone https://github.com/ggmm82/eigent.git .
 
-# Installa le dipendenze Node
+# Installa dipendenze Node
 RUN npm install
 
-# Build Babel durante la build del container
+# Compila Babel durante la build
 RUN npm run compile-babel
 
-# Esponi la porta usata da Vite
+# Build frontend statico
+RUN npm run build
+
+# Installa serve per servire la build
+RUN npm install -g serve
+
+# Esponi porta Vite/frontend
 EXPOSE 5173
 
-# Avvia Vite in dev mode su 0.0.0.0 senza superare il limite watchers
-CMD ["npm", "run", "dev", "--", "--host"]
+# Avvia server statico sulla porta 5173 accessibile da 0.0.0.0
+CMD ["serve", "-s", "dist", "-l", "5173"]
