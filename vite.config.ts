@@ -81,6 +81,11 @@ export default defineConfig(({ command, mode }) => {
         },
       }
     })(),
+
+     // <--- aggiungi questa parte
+    watch: {
+      ignored: ['**/node_modules/**', '**/.venv/**', '**/dist-electron/**']
+    },
     clearScreen: false,
 
   }
