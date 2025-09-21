@@ -18,8 +18,10 @@ RUN git clone https://github.com/eigent-ai/eigent.git .
 # Installa le dipendenze Node
 RUN npm install
 
+# Build Babel durante la build del container
+RUN npm run compile-babel
+
 # Esponi la porta usata da Vite
 EXPOSE 5173
 
-# Avvia Vite esponendo tutte le interfacce di rete (0.0.0.0)
 CMD ["npm", "run", "dev", "--", "--host"]
