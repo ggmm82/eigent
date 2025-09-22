@@ -3,6 +3,21 @@ from app.component.environment import auto_include_routers, env
 from loguru import logger
 import os
 from fastapi.staticfiles import StaticFiles
+from fastapi.middleware.cors import CORSMiddleware
+
+# --- CORS ---
+origins = [
+    "https://eigent-efe.sliplane.app",  # origin consentito
+    # aggiungi altri origin se necessario
+]
+
+api.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,  # ["*"] solo per sviluppo
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 prefix = env("url_prefix", "")
 auto_include_routers(api, prefix, "app/controller")
@@ -28,3 +43,4 @@ logger.add(
     level="DEBUG",
     enqueue=True,
 )
+
