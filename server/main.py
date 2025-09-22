@@ -11,6 +11,8 @@ origins = [
     # aggiungi altri origin se necessario
 ]
 
+origins = ["*"] 
+
 api.add_middleware(
     CORSMiddleware,
     allow_origins=origins,  # ["*"] solo per sviluppo
@@ -43,4 +45,5 @@ logger.add(
     level="DEBUG",
     enqueue=True,
 )
+
 
